@@ -44,7 +44,7 @@ public class KafkaConsumerConfig {
 		configs.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
 		configs.put(JsonDeserializer.TRUSTED_PACKAGES, "com.jinu.kafka.dto");
 		configs.put(ConsumerConfig.GROUP_ID_CONFIG, "group-1");
-		return new DefaultKafkaConsumerFactory<>(configs);
+		return new DefaultKafkaConsumerFactory<>(configs,new StringDeserializer(), new JsonDeserializer<>(User.class));
 	}
 
 	@Bean("kafkaUserListenerContainerFactory")
